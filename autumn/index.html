@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Яні 10 років ✨ Запрошення</title>
-<meta name="description" content="Запрошую відсвяткувати мій день народження — 29 листопада о 16:00, Драгон Парк">
+<meta name="description" content="Запрошую відсвяткувати мій день народження — 29 листопада о 16:00, новий Драгон Парк на Джерельній">
 <meta name="theme-color" content="#f6e6d2">
 <link rel="canonical" href="https://excaliburko.github.io/yana-10/autumn/">
 <meta property="og:type" content="website">
@@ -12,7 +12,7 @@
 <meta property="og:locale" content="uk_UA">
 <meta property="og:url" content="https://excaliburko.github.io/yana-10/autumn/">
 <meta property="og:title" content="Яні 10 років! Запрошення на День народження ✨">
-<meta property="og:description" content="Неділя, 29 листопада, 16:00 · Драгон Парк на Джерельній, кімната «Дунглі»">
+<meta property="og:description" content="Неділя, 29 листопада, 16:00 · новий Драгон Парк на Джерельній, кімната «Дунглі»">
 <meta property="og:image" content="https://excaliburko.github.io/yana-10/autumn/preview.jpg">
 <meta property="og:image:secure_url" content="https://excaliburko.github.io/yana-10/autumn/preview.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -21,7 +21,7 @@
 <meta property="og:image:alt" content="Яна в осінньому парку — 10 років, запрошення на День народження">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Яні 10 років! Запрошення на День народження ✨">
-<meta name="twitter:description" content="Неділя, 29 листопада, 16:00 · Драгон Парк на Джерельній">
+<meta name="twitter:description" content="Неділя, 29 листопада, 16:00 · новий Драгон Парк на Джерельній">
 <meta name="twitter:image" content="https://excaliburko.github.io/yana-10/autumn/preview.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%88%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -151,6 +151,8 @@
   }
   .photo-wrap.tilting .glare{opacity:1}
   .photo-wrap.js-tilt, .photo-wrap.js-tilt .ly{transition:none!important}
+  .opened .photo-wrap.js-tilt{animation:none}
+  .photo-stage{-webkit-tap-highlight-color:transparent}
   .photo-wrap.js-tilt .glare{opacity:.6}
   /* телефон: ховера немає — картка сама плавно погойдується в 3D */
   @property --gx{syntax:"<percentage>";inherits:true;initial-value:50%}
@@ -279,6 +281,24 @@
     border:1px solid rgba(207,133,54,.5);
   }
   .place .room b{font-weight:600}
+  /* новий парк — акцент */
+  .place .logo{display:block;width:min(230px,62%);height:auto;margin:2px auto 12px;
+    filter:drop-shadow(0 6px 12px rgba(120,60,20,.18))}
+  .place .new{
+    display:inline-flex;align-items:center;gap:6px;margin-bottom:8px;padding:5px 14px 5px 12px;border-radius:999px;
+    font:600 11px/1 "Montserrat",sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#fffaf0;
+    background:linear-gradient(100deg,#a9431a,#d9792a 50%,#c4571f);
+    box-shadow:0 6px 14px -6px rgba(169,67,26,.6), inset 0 1px 0 rgba(255,255,255,.35);
+    animation:newpulse 2.8s ease-in-out infinite}
+  .place .new svg{width:12px;height:12px}
+  @keyframes newpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+  .place .street{
+    display:inline-block;margin-top:6px;padding:0 6px;font:700 clamp(19px,5.4vw,22px)/1.3 "Cormorant Garamond",serif;color:#5c3820;
+    background:linear-gradient(transparent 58%,rgba(233,160,60,.45) 58% 92%,transparent 92%)}
+  .place .note{
+    max-width:300px;margin:14px auto 0;padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.45;color:var(--ink);
+    background:rgba(255,248,236,.85);border:1px dashed rgba(192,106,38,.55)}
+  .place .note b{color:#a9431a;font-weight:600}
 
   /* countdown */
   .count{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
@@ -411,13 +431,12 @@
   <section class="card reveal" aria-label="Місце">
     <p class="label">де</p>
     <div class="place">
-      <svg class="pin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" stroke="#c06a26" stroke-width="1.5"/>
-        <circle cx="12" cy="10" r="2.6" stroke="#c06a26" stroke-width="1.5"/>
-      </svg>
+      
+      <span class="new"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg>новий парк</span>
       <p class="name gold">Драгон Парк</p>
-      <p class="addr">на Джерельній</p>
+      <p class="street">на вул. Джерельній</p>
       <p class="room">кімната <b>«Дунглі»</b></p>
+      <p class="note">Зверніть увагу: свято в <b>новому</b> Драгон Парку&nbsp;— саме <b>на&nbsp;Джерельній</b>, не в&nbsp;іншому.</p>
     </div>
     <div class="actions">
       <a class="btn btn-ghost" id="mapBtn" target="_blank" rel="noopener">
@@ -508,7 +527,7 @@
       + '&text=' + enc('День народження Яни 🎂')
       + '&dates=' + fmt(EVENT_START) + '/' + fmt(end)
       + '&ctz=Europe/Kyiv'
-      + '&location=' + enc('Драгон Парк, вул. Джерельна — кімната «Дунглі»')
+      + '&location=' + enc('Новий Драгон Парк, вул. Джерельна — кімната «Дунглі»')
       + '&details=' + enc('Запрошую відсвяткувати мій день народження! ✨\nСписок бажань: https://rewish.io/LzIDAA/wishes#766320');
     cal.addEventListener('click', ev => {
       const r = ev.currentTarget.getBoundingClientRect();
@@ -674,9 +693,9 @@
   const tiltStage = byId('photoStage'), tiltCard = byId('photoWrap');
   const TILT_MAX = 12; // degrees
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
-  function setTilt(rx, ry, gx, gy){
+  function setTilt(rx, ry, gx, gy, k = 1.025){
     tiltCard.classList.add('tilting');
-    tiltCard.style.transform = `rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) scale(1.025)`;
+    tiltCard.style.transform = `rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) scale(${k.toFixed(4)})`;
     tiltCard.style.boxShadow = `${(-ry*1.6).toFixed(1)}px ${(30 + rx*1.6).toFixed(1)}px 60px -22px rgba(120,60,20,.5)`;
     tiltCard.style.setProperty('--gx', gx.toFixed(1) + '%');
     tiltCard.style.setProperty('--gy', gy.toFixed(1) + '%');
@@ -687,27 +706,56 @@
     tiltCard.style.removeProperty('--gx'); tiltCard.style.removeProperty('--gy');
   }
 
-  /* mouse / trackpad: картка сама плавно погойдується, а під мишкою — слідує за нею */
-  if (matchMedia('(hover: hover) and (pointer: fine)').matches && !reduced){
+  /* картка: сама плавно погойдується; мишка — веде її за собою;
+     дотик (телефон) — картка «притискається» під пальцем, тягнеться за ним
+     і пружно повертається, коли палець відпустили */
+  if (!reduced){
     tiltCard.classList.add('js-tilt');
-    let hover = null, cx = .5, cy = .5, t0 = performance.now();
+    const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+    let hold = null, touching = false, inView = true;
+    let cx = .5, cy = .5, vx = 0, vy = 0, sc = 0, vs = 0;
+    let press = null, kx = 0, ky = 0, vkx = 0, vky = 0;   // «втиск» у точці кліку/дотику
+    const t0 = performance.now();
+    const at = e => { const r = tiltStage.getBoundingClientRect();     // stage never rotates, so no jitter
+      return [clamp((e.clientX - r.left) / r.width, 0, 1), clamp((e.clientY - r.top) / r.height, 0, 1)]; };
     tiltStage.addEventListener('pointermove', e => {
-      if (e.pointerType !== 'mouse') return;
-      const r = tiltStage.getBoundingClientRect();     // stage never rotates, so no jitter
-      hover = [clamp((e.clientX - r.left) / r.width, 0, 1), clamp((e.clientY - r.top) / r.height, 0, 1)];
+      if (e.pointerType === 'mouse' ? fine : touching) hold = at(e);
     });
-    tiltStage.addEventListener('pointerleave', () => { hover = null; });
+    tiltStage.addEventListener('pointerdown', e => {
+      press = at(e);
+      if (e.pointerType === 'mouse') { vs -= .025; return; }
+      touching = true; hold = press;
+      vs -= .05;                                        // «натиск» — картка прогинається
+    });
+    const release = e => {
+      press = null;
+      if (e.pointerType === 'mouse') return;
+      touching = false; hold = null;
+      vs += .03;                                        // пружний відскок
+    };
+    tiltStage.addEventListener('pointerup', release);
+    tiltStage.addEventListener('pointercancel', release);
+    tiltStage.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') { hold = null; press = null; } });
+    new IntersectionObserver(es => { inView = es[0].isIntersecting; }).observe(tiltStage);
+
     (function loop(now){
       requestAnimationFrame(loop);
-      if (document.hidden || !document.body.classList.contains('opened')) return;
+      if (document.hidden || !inView || !document.body.classList.contains('opened')) return;
       const t = (now - t0) / 1000;
       // повільне «дихання» картки: дві синусоїди з різними періодами
-      const tx = hover ? hover[0] : .5 + .36 * Math.sin(t * .55) + .06 * Math.sin(t * 1.3);
-      const ty = hover ? hover[1] : .5 + .3 * Math.sin(t * .42 + 1.2);
-      const k = hover ? .14 : .05;
-      cx += (tx - cx) * k; cy += (ty - cy) * k;
-      const amp = hover ? TILT_MAX : 6;
-      setTilt((.5 - cy) * 2 * amp, (cx - .5) * 2 * amp, cx*100, cy*100);
+      const tx = hold ? hold[0] : .5 + .36 * Math.sin(t * .55) + .06 * Math.sin(t * 1.3);
+      const ty = hold ? hold[1] : .5 + .3 * Math.sin(t * .42 + 1.2);
+      // пружина: під пальцем — швидко, без пальця — м'яко з легким перехлестом
+      const k = hold ? .12 : .035, d = hold ? .62 : .86;
+      vx = (vx + (tx - cx) * k) * d; vy = (vy + (ty - cy) * k) * d;
+      cx += vx; cy += vy;
+      vs = (vs - sc * .18) * .78; sc += vs;
+      // місце кліку «провалюється» вглиб, після відпускання — пружно назад
+      const pkx = press ? (press[0] - .5) * 2 : 0, pky = press ? (press[1] - .5) * 2 : 0;
+      vkx = (vkx + (pkx - kx) * .16) * .72; vky = (vky + (pky - ky) * .16) * .72;
+      kx += vkx; ky += vky;
+      const amp = hold ? (touching ? 7 : TILT_MAX) : 6, KICK = 8;
+      setTilt((.5 - cy) * 2 * amp - ky * KICK, (cx - .5) * 2 * amp + kx * KICK, clamp(cx, -.1, 1.1)*100, clamp(cy, -.1, 1.1)*100, 1.025 + sc);
     })(t0);
   }
 
