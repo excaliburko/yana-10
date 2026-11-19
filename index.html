@@ -146,6 +146,19 @@
     mix-blend-mode:soft-light;opacity:0;transition:opacity .5s ease;
   }
   .photo-wrap.tilting .glare{opacity:1}
+  /* телефон: ховера немає — картка сама плавно погойдується в 3D */
+  @property --gx{syntax:"<percentage>";inherits:true;initial-value:50%}
+  @property --gy{syntax:"<percentage>";inherits:true;initial-value:50%}
+  @media (hover: none), (pointer: coarse){
+    .opened .photo-wrap{animation:floaty 10s ease-in-out 1.2s infinite}
+    .opened .photo-wrap .glare{opacity:.9}
+  }
+  @keyframes floaty{
+    0%,100%{transform:rotateX(0deg) rotateY(0deg);--gx:30%;--gy:20%}
+    25%{transform:rotateX(4deg) rotateY(-6deg) scale(1.01);--gx:15%;--gy:35%}
+    50%{transform:rotateX(-3deg) rotateY(-1deg);--gx:45%;--gy:80%}
+    75%{transform:rotateX(-4deg) rotateY(6deg) scale(1.01);--gx:85%;--gy:60%}
+  }
   .photo img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;-webkit-user-drag:none;user-select:none;animation:kenburns 18s ease-in-out infinite alternate}
   @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.045) translateY(-1%)}}
   .photo::after{ /* soft moving sheen */
@@ -637,48 +650,10 @@
     tiltStage.addEventListener('pointerleave', resetTilt);
   }
 
-  /* phone: tilt the card by turning the phone (gyroscope) */
-  let gyroOn = false;
-  function startGyro(){
-    if (gyroOn || reduced) return;
-    gyroOn = true;
-    let base = null, cur = {x:0, y:0}, target = {x:0, y:0}, running = false;
-    addEventListener('deviceorientation', ev => {
-      if (ev.beta == null || ev.gamma == null) return;
-      let b = ev.beta, g = ev.gamma;
-      const ang = (screen.orientation && screen.orientation.angle) || window.orientation || 0;
-      if (ang === 90)  [b, g] = [-g, b];
-      if (ang === -90 || ang === 270) [b, g] = [g, -b];
-      if (!base) base = {b, g};
-      // the "rest" position slowly follows how the phone is held, so the card always returns to flat
-      base.b += (b - base.b) * 0.01; base.g += (g - base.g) * 0.01;
-      target.x = clamp(-(b - base.b) * 0.7, -TILT_MAX, TILT_MAX);
-      target.y = clamp( (g - base.g) * 0.7, -TILT_MAX, TILT_MAX);
-      if (!running){ running = true; requestAnimationFrame(loop); }
-    });
-    function loop(){
-      cur.x += (target.x - cur.x) * 0.12;
-      cur.y += (target.y - cur.y) * 0.12;
-      setTilt(cur.x, cur.y, 50 + cur.y / TILT_MAX * 50, 50 - cur.x / TILT_MAX * 50);
-      requestAnimationFrame(loop);
-    }
-  }
-  function enableGyro(){
-    if (matchMedia('(hover: hover) and (pointer: fine)').matches) return;   // desktop uses the mouse
-    const DOE = window.DeviceOrientationEvent;
-    if (!DOE) return;
-    if (typeof DOE.requestPermission === 'function'){        // iPhone: needs permission from a tap
-      DOE.requestPermission().then(s => { if (s === 'granted') startGyro(); }).catch(() => {});
-    } else {
-      startGyro();                                             // Android: works right away
-    }
-  }
-
   /* ---------------- open the invitation ---------------- */
   const intro = byId('intro');
   byId('openBtn').addEventListener('click', e => {
     e.stopPropagation();
-    enableGyro();
     const r = e.currentTarget.getBoundingClientRect();
     const cx = r.left + r.width/2, cy = r.top + r.height/2;
     burst(cx, cy, 120);
