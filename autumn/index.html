@@ -284,21 +284,11 @@
   /* новий парк — акцент */
   .place .logo{display:block;width:min(230px,62%);height:auto;margin:2px auto 12px;
     filter:drop-shadow(0 6px 12px rgba(120,60,20,.18))}
-  .place .new{
-    display:inline-flex;align-items:center;gap:6px;margin-bottom:8px;padding:5px 14px 5px 12px;border-radius:999px;
-    font:600 11px/1 "Montserrat",sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#fffaf0;
-    background:linear-gradient(100deg,#a9431a,#d9792a 50%,#c4571f);
-    box-shadow:0 6px 14px -6px rgba(169,67,26,.6), inset 0 1px 0 rgba(255,255,255,.35);
-    animation:newpulse 2.8s ease-in-out infinite}
-  .place .new svg{width:12px;height:12px}
-  @keyframes newpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-  .place .street{
-    display:inline-block;margin-top:6px;padding:0 6px;font:700 clamp(19px,5.4vw,22px)/1.3 "Cormorant Garamond",serif;color:#5c3820;
-    background:linear-gradient(transparent 58%,rgba(233,160,60,.45) 58% 92%,transparent 92%)}
-  .place .note{
-    max-width:300px;margin:14px auto 0;padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.45;color:var(--ink);
-    background:rgba(255,248,236,.85);border:1px dashed rgba(192,106,38,.55)}
-  .place .note b{color:#a9431a;font-weight:600}
+  .place .new{display:inline-block;margin-bottom:4px;padding:3px 10px;border-radius:999px;
+    font:600 10px/1.2 "Montserrat",sans-serif;letter-spacing:.26em;text-transform:uppercase;color:#a9431a;
+    border:1px solid rgba(192,106,38,.5)}
+  .place .street{margin-top:4px;font-size:15px;color:var(--ink)}
+  .place .street b{font-weight:600}
 
   /* countdown */
   .count{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
@@ -432,11 +422,10 @@
     <p class="label">де</p>
     <div class="place">
       
-      <span class="new"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z"/></svg>новий парк</span>
+      <span class="new">новий</span>
       <p class="name gold">Драгон Парк</p>
-      <p class="street">на вул. Джерельній</p>
+      <p class="street">на <b>Джерельній</b></p>
       <p class="room">кімната <b>«Дунглі»</b></p>
-      <p class="note">Зверніть увагу: свято в <b>новому</b> Драгон Парку&nbsp;— саме <b>на&nbsp;Джерельній</b>, не в&nbsp;іншому.</p>
     </div>
     <div class="actions">
       <a class="btn btn-ghost" id="mapBtn" target="_blank" rel="noopener">
